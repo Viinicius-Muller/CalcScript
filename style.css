@@ -41,8 +41,8 @@ body {
   display: inline-block;
   position: absolute;
   left: 0px;
-  font-size: 2rem;
-  color: cadetblue;
+  font-size: 1.8rem;
+  color: rgba(9, 255, 140, 0.61);
 }
 
 .output-result {
@@ -57,17 +57,36 @@ body {
   gap: 8px;
 }
 
-.math-buttons button {
+.math-numbers {
   border: none;
   text-align: center;
   padding: 8px;
-  background-color: #ffffff56;
+  background-color: #00ff7356;
   color: #ffffff;
   font-size: 3.8rem;
   border-radius: 4px;
   transition: 0.25s;
 }
 
-.math-buttons button:hover {
-  background-color: #ffffff7a;
+.math-numbers:hover {
+  background-color: #00ff737e;
+}
+
+.math-operators {
+  border: none;
+  text-align: center;
+  padding: 8px;
+  background-color: #00ff739f;
+  color: #ffffff;
+  font-size: 3.8rem;
+  border-radius: 4px;
+  transition: 0.25s;
+}
+
+.math-operators:hover {
+  background-color: #00ff73c0;
+}
+
+#calc {
+  grid-column: 2 / 5;
 }

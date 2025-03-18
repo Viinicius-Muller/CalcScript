@@ -6,53 +6,56 @@ const resultBtn = document.getElementById("result");
 const output_operations = document.querySelector(".output-operations");
 const output_result = document.querySelector(".output-result");
 
-let str = "";
 let firstInput = "";
 let secondInput = "";
-let previousOperation = "";
-let has = false;
+let currentOperation = "";
+let inSecondInput = false;
 
 function addNum(num) {
-  if (has) {
-    num = secondInput + num;
-    secondInput = num;
+  if (inSecondInput) {
+    secondInput = secondInput + num;
   } else {
-    num = firstInput + num;
-    firstInput = num;
+    firstInput = firstInput + num;
   }
-  console.log(firstInput, secondInput, previousOperation);
   updateText();
 }
 
 function addOp(op) {
-  if (has) {
+  //If is in second input
+  if (inSecondInput) {
+    //Calculate before new Operation
     calculate();
-    has = true;
-    firstInput = Number(output_result.textContent);
+    firstInput = output_result.textContent;
     secondInput = "";
-    previousOperation = op;
+
+    currentOperation = op;
   } else {
-    has = true;
-    previousOperation = op;
+    inSecondInput = true;
+    currentOperation = op;
   }
   updateText();
 }
 
 function clear() {
-  has = false;
-  previousOperation = "";
+  //First input
+  inSecondInput = false;
+
+  //Clear Math
+  currentOperation = "";
   firstInput = "";
   secondInput = "";
-  output_operations.textContent = "";
+
+  //Clear UI
   output_result.textContent = "";
+  updateText();
 }
 
 function updateText() {
-  output_operations.textContent = `${firstInput} ${previousOperation} ${secondInput}`;
+  output_operations.textContent = `${firstInput} ${currentOperation} ${secondInput}`;
 }
 
 function calculate() {
-  switch (previousOperation) {
+  switch (currentOperation) {
     case "+":
       output_result.textContent = Number(firstInput) + Number(secondInput);
       break;
@@ -65,7 +68,10 @@ function calculate() {
     case "/":
       output_result.textContent = (
         Number(firstInput) / Number(secondInput)
-      ).toFixed(3);
+      ).toFixed(2);
+      break;
+    case "%":
+      output_result.textContent = Number(firstInput) % Number(secondInput);
       break;
   }
 }

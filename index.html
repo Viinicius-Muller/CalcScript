@@ -10,8 +10,8 @@
     <div class="background">
       <div class="calculator">
         <div class="output">
-          <p class="output-operations">5+5</p>
-          <p class="output-result">10</p>
+          <p class="output-operations"></p>
+          <p class="output-result"></p>
         </div>
         <div class="math-buttons">
           <button class="math-operators btn" onclick="addOp('%')">%</button>
@@ -31,7 +31,9 @@
           <button class="math-numbers btn" onclick="addNum(3)">3</button>
           <button class="math-numbers btn" onclick="addNum(0)">0</button>
           <button class="math-numbers btn" onclick="addNum('.')">.</button>
-          <button class="math-operators" onclick="calculate()">=</button>
+          <button class="math-operators" id="calc" onclick="calculate()">
+            =
+          </button>
         </div>
       </div>
     </div>
